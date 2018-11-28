@@ -1,0 +1,12 @@
+[Unit]
+Description=tar.gz bundled java service
+
+[Service]
+Type=simple
+Environment=LANG=en_US.UTF-8
+User=myservice-tgz
+Group=myservice-tgz
+ExecStart=/usr/bin/java -jar /srv/myservice-tgz/current/myservice-tgz.jar
+
+[Install]
+WantedBy=multi-user.target
