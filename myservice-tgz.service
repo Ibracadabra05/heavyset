@@ -7,7 +7,7 @@ Environment=LANG=en_US.UTF-8
 User=myservice-tgz
 Group=myservice-tgz
 WorkingDirectory=/srv/myservice-tgz/current
-ExecStart=exec java -jar myservice-tgz.jar server myservice-tgz.yml
+ExecStart=/usr/bin/java -jar /srv/myservice-tgz/current/myservice-tgz.jar server myservice-tgz.yml
 
 [Install]
 WantedBy=multi-user.target

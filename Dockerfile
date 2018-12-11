@@ -1,4 +1,4 @@
-FROM ubuntu:18.04
+FROM solita/ubuntu-systemd:18.04
 
 RUN apt-get update && apt-get install -y software-properties-common
 
@@ -38,8 +38,8 @@ RUN mkdir /srv/myservice-tgz/releases/init
 RUN ln -sfT /srv/myservice-tgz/releases/init /srv/myservice-tgz/current
 RUN chown -R myservice-tgz:myservice-tgz /srv/myservice-tgz
 
-
 # expose port for myservice
 EXPOSE 8080
 
-CMD ["/sbin/init"]
+# Workaround for docker/docker#27202, technique based on comments from docker/docker#9212
+CMD ["/bin/bash", "-c", "exec /sbin/init --log-target=journal 3>&1"]
