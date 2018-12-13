@@ -10,6 +10,7 @@ RUN echo oracle-java8-installer shared/accepted-oracle-license-v1-1 select true 
   apt-get install -y \
   	oracle-java8-installer \
   	curl \
+  	ssh \
   	vim && \
   apt-get clean && \
   rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* && \
@@ -60,4 +61,4 @@ ADD ./myservice-remote_jar.yml /srv/myservice-remote_jar/
 EXPOSE 8080
 
 # Workaround for docker/docker#27202, technique based on comments from docker/docker#9212
-CMD ["/bin/bash", "-c", "exec /sbin/init --log-target=journal 3>&1"]
+CMD ["/bin/bash", "-c", "exec /sbin/init --log-target=journal 3>&1", "service sshd start"]
