@@ -2,12 +2,12 @@
 Description=jar bundled java service
 
 [Service]
-Type=simple
+Type=Forking
 Environment=LANG=en_US.UTF-8
 User=myservice-jar
 Group=myservice-jar
 WorkingDirectory=/srv/myservice-jar/current
-ExecStart=/usr/bin/java -jar /srv/myservice-jar/current/myservice-jar.jar server myservice-jar.yml
+ExecStart=/usr/bin/java -jar /srv/myservice-jar/current/myservice-jar.jar server /srv/myservice-jar/myservice-jar.yml
 
 [Install]
 WantedBy=multi-user.target

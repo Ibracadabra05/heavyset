@@ -2,12 +2,12 @@
 Description=remote_jar bundled java service
 
 [Service]
-Type=simple
+Type=Forking
 Environment=LANG=en_US.UTF-8
 User=myservice-remote_jar
 Group=myservice-remote_jar
 WorkingDirectory=/srv/myservice-remote_jar/current
-ExecStart=/usr/bin/java -jar /srv/myservice-remote_jar/current/myservice-remote_jar.jar server myservice-remote_jar.yml
+ExecStart=/usr/bin/java -jar /srv/myservice-remote_jar/current/myservice-remote_jar.jar server /srv/myservice-jar/myservice-remote_jar.yml
 
 [Install]
 WantedBy=multi-user.target
