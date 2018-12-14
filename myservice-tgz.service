@@ -2,7 +2,7 @@
 Description=tar.gz bundled java service
 
 [Service]
-Type=Forking
+Type=Fork
 Environment=LANG=en_US.UTF-8
 User=myservice-tgz
 Group=myservice-tgz

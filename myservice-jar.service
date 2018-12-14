@@ -2,7 +2,7 @@
 Description=jar bundled java service
 
 [Service]
-Type=Forking
+Type=Fork
 Environment=LANG=en_US.UTF-8
 User=myservice-jar
 Group=myservice-jar
