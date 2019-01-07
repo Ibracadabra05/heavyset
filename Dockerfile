@@ -32,7 +32,6 @@ RUN adduser --home /srv/myservice --system --disabled-password --group myservice
 RUN echo 'vagrant:vagrant' | chpasswd
 RUN usermod -aG sudo vagrant
 
-# replicate sprout_java LWRP for tgz
 RUN adduser --home /srv/myservice-tgz --system --disabled-password --group myservice-tgz
 ADD ./myservice-tgz.service /etc/systemd/system/myservice-tgz.service
 RUN mkdir /srv/myservice-tgz/releases
@@ -40,7 +39,6 @@ RUN mkdir /srv/myservice-tgz/releases/init
 RUN ln -sfT /srv/myservice-tgz/releases/init /srv/myservice-tgz/current
 RUN chown -R myservice-tgz:myservice-tgz /srv/myservice-tgz
 
-# replicate sprout_java LWRP for jar
 RUN adduser --home /srv/myservice-jar --system --disabled-password --group myservice-jar
 ADD ./myservice-jar.service /etc/systemd/system/myservice-jar.service
 RUN mkdir /srv/myservice-jar/releases
@@ -49,7 +47,6 @@ RUN ln -sfT /srv/myservice-jar/releases/init /srv/myservice-jar/current
 RUN chown -R myservice-jar:myservice-jar /srv/myservice-jar
 ADD ./myservice-jar.yml /srv/myservice-jar/
 
-# replicate sprout_java LWRP for remote_jar
 RUN adduser --home /srv/myservice-remote_jar --system --disabled-password --group myservice-remote_jar
 ADD ./myservice-remote_jar.service /etc/systemd/system/myservice-remote_jar.service
 RUN mkdir /srv/myservice-remote_jar/releases
